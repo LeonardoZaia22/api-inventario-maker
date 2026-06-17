@@ -1,6 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
+import models
+from database import engine
+
+models.Base.metadata.create_all(bind=engine)
+
 app = FastAPI(title="API Inova Lab - Inventário Maker")
 
 class ComponenteSchema(BaseModel):
